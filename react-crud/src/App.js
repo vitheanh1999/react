@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { firebaseConnect } from './firebaseConnect';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Nav from './components/Nav';
-import NoteForm from './components/NoteForm';
-import NoteList from './components/NoteList';
+import PostFormContainer from './containers/PostFormContainer';
+import ListPostContainer from './containers/ListPostContainer';
+import PostEditContainer from './containers/PostEditContainer';
 
 class App extends Component {
   render() {
@@ -12,8 +13,9 @@ class App extends Component {
         <Nav></Nav>
         <div className="container">
           <div className="row">
-            <NoteList></NoteList>
-            <NoteForm></NoteForm>
+            <ListPostContainer></ListPostContainer>
+            <PostFormContainer></PostFormContainer>
+            <PostEditContainer></PostEditContainer>
           </div>
       </div>
       </div>

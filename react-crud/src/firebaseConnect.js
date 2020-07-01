@@ -15,6 +15,6 @@ export const firebaseConnect = firebase.initializeApp(firebaseConfig);
 
 var data = firebase.database().ref('node1/');
 data.once('value').then(function(snapshot){
-    console.log(snapshot.val());
+    // console.log(snapshot.val());
     
 })

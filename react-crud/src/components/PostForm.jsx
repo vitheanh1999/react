@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-class NoteForm extends Component {
+class PostForm extends Component {
     constructor(props) {
         super(props);
         this.state={
@@ -20,23 +21,20 @@ class NoteForm extends Component {
          var item={};
          item.title = title;
          item.content = content;
-         console.log(item);
-         
+         this.props.addPost(title,content); 
      }
     render() {
         const {noteTitle,noteContent}=this.state;
         return (
            <div className="col-md-4">
-                <h3>Sửa nội dung note</h3>
+                <h3>Thêm nội dung note</h3>
                 <div className="form-group">
                     <label htmlFor>Tiêu đề note</label>
-                    <input type="text" name="noteTitle" id="noteTitle" className="form-control" placeholder aria-describedby="helpId" onChange={event => this.isChange(event)} />
-                    <small id="helpId" className="text-muted">Help text</small>
+                    <input type="text" name="noteTitle" id="noteTitle" className="form-control" aria-describedby="helpId" onChange={event => this.isChange(event)} />
                 </div>
-                .<div className="form-group">
+                <div className="form-group">
                     <label htmlFor>Nội dung note</label>
-                    <textarea type="text" name="noteContent" id="noteContent" className="form-control" placeholder aria-describedby="helpId"  defaultValue={""} onChange={event => this.isChange(event)}/>
-                    <small id="helpId" className="text-muted">Help text</small>
+                    <textarea type="text" name="noteContent" id="noteContent" className="form-control"  aria-describedby="helpId"  defaultValue={""} onChange={event => this.isChange(event)}/>
                 </div>
                 <button onClick={() => this.addData(noteTitle,noteContent)} type="button" className="btn btn-primary">Submit</button>
 
@@ -46,4 +44,7 @@ class NoteForm extends Component {
     }
 }
 
-export default NoteForm;
+PostForm.propTypes={
+    addPost:PropTypes.func,
+}
+export default PostForm;
