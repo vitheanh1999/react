@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import PostEditContainer from '../containers/PostEditContainer';
 
 class PostForm extends Component {
     constructor(props) {
@@ -25,8 +27,14 @@ class PostForm extends Component {
      }
     render() {
         const {noteTitle,noteContent}=this.state;
+        const {data} = this.props
         return (
            <div className="col-md-4">
+               {
+                data.map(value =>(
+                    value.editStatus ? <PostEditContainer></PostEditContainer> : ''
+                ))
+                    }
                 <h3>Thêm nội dung note</h3>
                 <div className="form-group">
                     <label htmlFor>Tiêu đề note</label>
@@ -38,13 +46,21 @@ class PostForm extends Component {
                 </div>
                 <button onClick={() => this.addData(noteTitle,noteContent)} type="button" className="btn btn-primary">Submit</button>
 
+           
             </div>
 
         );
     }
 }
 
+const mapStateToProps = (state, ownProps) => {
+    return {
+        data : state
+    }
+  }
+
 PostForm.propTypes={
     addPost:PropTypes.func,
 }
-export default PostForm;
+
+export default connect(mapStateToProps)(PostForm) ;

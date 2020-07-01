@@ -4,10 +4,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Nav from './components/Nav';
 import PostFormContainer from './containers/PostFormContainer';
 import ListPostContainer from './containers/ListPostContainer';
-import PostEditContainer from './containers/PostEditContainer';
+
 
 class App extends Component {
   render() {
+    const {data} = this.props; 
     return (
       <div>
         <Nav></Nav>
@@ -15,12 +16,13 @@ class App extends Component {
           <div className="row">
             <ListPostContainer></ListPostContainer>
             <PostFormContainer></PostFormContainer>
-            <PostEditContainer></PostEditContainer>
+            
           </div>
       </div>
       </div>
     );
   }
 }
+
 
 export default App;

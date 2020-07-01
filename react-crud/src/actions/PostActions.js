@@ -15,3 +15,9 @@ export const editPost = (id) =>({
     type: types.EDIT_POST,
     id
 })
+export const updatePost = (id,newTitle,newContent) =>({
+    type: types.UPDATE_POST,
+    id:id,
+    newTitle,
+    newContent,
+})

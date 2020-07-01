@@ -2,6 +2,7 @@ import * as types from '../constants/PostTypes';
 import data from '../data.json';
 
 const initialState = data;
+
 const PostReducer = (state = initialState, action) => {
     switch (action.type) {
         case "ADD_POST":
@@ -18,15 +19,21 @@ const PostReducer = (state = initialState, action) => {
             return  state.filter(post => post.id!=action.id)
         case "EDIT_POST":
             return state.map((post) => post.id === action.id
-            ? { ...post, editStatus: !post.editStatus }
-            : post);
-        case "UPDATE_POST":
+            ? { ...post, editStatus: !post.editStatus}
+            : {...post,editStatus:false});
+        case "UPDATE_POST":     
             return state.map((post) => {
-               if( post.id === action.id){
-                   post.title = action.title;
-                   post.content = action.content
-               }
-               return post
+                if (post.id === action.id) {
+                    console.log(action);  
+                    return {
+                        ...post,
+                        title: action.newTitle,
+                        content: action.newContent,
+                        editing: !post.editStatus
+                    }
+                } else {
+                    return post;
+                }
             })
         default:
             return state

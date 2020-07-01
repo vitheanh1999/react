@@ -11,7 +11,11 @@ class PostList extends Component {
     }
     deletePost = (id) => {    
       this.props.deletePost(id);
-      this.props.editPost(id);
+    }
+    editPost = (id) =>{
+        this.props.editPost(id);     
+        console.log(this.props.posts);
+         
     }
     render() {
         const {posts} = this.props;  
